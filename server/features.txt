@@ -1,0 +1,17 @@
+1. user registeration and login
+2. user view dashboard with details
+3. user can view all his policies GET /api/user/policies
+4. user can add new policy POST /api/user/get_policy
+5. user can view single policy GET /api/user/policy/{id}
+6. user can add beneficiaries POST /api/user/beneficiary/add
+7. user can edit beneficiaries PUT /api/user/beneficiay/{id}/edit
+8. user can delete beneficiaries DELETE /api/user/beneficiary/{id}/delete
+9. user can make payment for policy (initialize payment, make payment, verify payment)
+
+
+### ADMIN SIDE
+1. admin can login
+2. admin can add policies 
+3. admin can edit policies
+4. admin can delete policies
+5. admin dashboard
