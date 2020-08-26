@@ -1,23 +1,26 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const morgan = require('morgan');
-const cors = require('cors');
+const morgan = require("morgan");
+const cors = require("cors");
 
+const connect = require("./config/dbconnection");
+
+connect();
 
 //middleware
-app.use(morgan('tiny'));
-app.use(express.json()) //req.body
+app.use(morgan("tiny"));
+app.use(express.json()); //req.body
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 
 //Routers
 
 //register and login routes
-app.use('/auth', require("./routes/jwtAuth"));
+app.use("/auth", require("./routes/jwtAuth"));
 
 //dashboard router
 
-app.use('/dashboard', require("./routes/dashboard"));
+app.use("/dashboard", require("./routes/dashboard"));
 
 // app.use((req, res, next)=> {
 //     const err = new Error();
@@ -35,6 +38,6 @@ app.use('/dashboard', require("./routes/dashboard"));
 //     });
 // }
 
-app.listen(5000, ()=>{
-    console.log('App has started at port 5000');
-})
+app.listen(5000, () => {
+  console.log("App has started at port 5000");
+});
