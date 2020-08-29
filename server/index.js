@@ -19,8 +19,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/auth", require("./routes/jwtAuth"));
 
 //dashboard router
-
 app.use("/dashboard", require("./routes/dashboard"));
+
+//policy router
+app.use("/policy", require("./routes/policy"));
+
+//beneficiary router
+app.use("/beneficiary", require("./routes/beneficiary"));
 
 // app.use((req, res, next)=> {
 //     const err = new Error();

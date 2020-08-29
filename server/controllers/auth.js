@@ -29,7 +29,7 @@ const register = async (req, res) => {
       firstName,
       lastName,
       email,
-      bcryptPassword,
+      password: bcryptPassword,
     });
 
     if (newUser) {
@@ -96,4 +96,35 @@ const is_verify = async (req, res) => {
   }
 };
 
-module.exports = { register, login, is_verify };
+const adminLogin = async (req, res) => {
+  try {
+    //1. destructure the req.body
+    const { email, password } = req.body;
+    //2. check if user doesnt exist (if not then throw error)
+    const admin = await models.Admin.findAll({
+      where: {
+        email: email
+      }
+    });
+    if (admin.length < 1) {
+      return res.status(401).json("Admin Password or Email is incorrect");
+    }
+    //3. check if incoming password is the same as database
+    if (password !== admin[0].password) {
+      return res.status(401).json("Password or Email incorrect");
+    }
+
+    //4. give them jwt token
+    const token = jwtGenerator(admin[0].id);
+    res.status(200).json({
+      success: true,
+      message: "Admin login successful",
+      token: token
+    })
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("server error");
+  }
+};
+
+module.exports = { register, login, adminLogin, is_verify };
