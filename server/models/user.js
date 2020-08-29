@@ -8,6 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      User.hasMany(models.UserPolicy, {
+        foreignKey: 'user_id',
+        as: 'owner'
+      });
     }
   }
   User.init(

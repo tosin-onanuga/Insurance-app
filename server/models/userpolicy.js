@@ -11,6 +11,15 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      UserPolicy.belongsTo(models.User, {
+        foreignKey: 'user_id'
+      });
+      UserPolicy.belongsTo(models.Policy, {
+        foreignKey: 'policy'
+      });
+      UserPolicy.hasMany(models.Beneficiary, {
+        foreignKey: 'policyPlan',
+      });
     }
   };
   UserPolicy.init({

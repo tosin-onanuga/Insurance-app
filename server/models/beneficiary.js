@@ -11,6 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Beneficiary.belongsTo(models.UserPolicy, {
+        foreignKey: 'policyPlan'
+      });
     }
   };
   Beneficiary.init({
