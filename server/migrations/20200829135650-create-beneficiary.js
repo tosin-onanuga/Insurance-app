@@ -1,7 +1,7 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("beneficiaries", {
+    await queryInterface.createTable("Beneficiaries", {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -29,16 +29,15 @@ module.exports = {
         allowNull: false,
       },
       phoneNumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
       },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: false,
       },
       bvn: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
         unique: true,
       },
@@ -47,7 +46,7 @@ module.exports = {
         allowNull: false,
       },
       accountNumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
         unique: true,
       },
@@ -86,6 +85,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("beneficiaries");
+    await queryInterface.dropTable("Beneficiaries");
   },
 };
