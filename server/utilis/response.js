@@ -1,15 +1,16 @@
-const successResponse = (statusCode, message, res) => {
-    return res.status(statusCode).json({
-        success: true,
-        message: message,
-    });
+const successResponse = (statusCode, message, data = null, res) => {
+  return res.status(statusCode).json({
+    success: true,
+    message: message,
+    data,
+  });
 };
 
 const errorResponse = (statusCode, error, res) => {
-    return res.status(statusCode).json({
-        success: false,
-        error: error,
-    });
+  return res.status(statusCode).json({
+    success: false,
+    error: error,
+  });
 };
 
 module.exports = { successResponse, errorResponse };
